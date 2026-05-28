@@ -87,15 +87,23 @@ html_content = """
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
-            min-height: 500px;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .hero-content h1 {
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+        }
+
+        .hero-text-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
@@ -124,12 +132,31 @@ html_content = """
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            margin-right: 1rem;
         }
 
         .cta-button:hover {
             background-color: #e67e22;
             transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(243, 156, 18, 0.3);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
         }
 
         /* About Section */
@@ -270,10 +297,58 @@ html_content = """
             font-weight: bold;
         }
 
+        /* Research Section */
+        .research {
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .research h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .research-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .research-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .research-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .research-item p {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .research-highlight {
+            background-color: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .research-highlight strong {
+            color: var(--primary-color);
+        }
+
         /* Contact Section */
         .contact {
             padding: 80px 20px;
-            background-color: #f8f9fa;
+            background-color: white;
         }
 
         .contact h2 {
@@ -295,7 +370,7 @@ html_content = """
         }
 
         .contact-item {
-            background: white;
+            background: #f8f9fa;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: var(--shadow);
@@ -361,7 +436,12 @@ html_content = """
                 font-size: 0.9rem;
             }
 
-            .hero-content h1 {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text-content h1 {
                 font-size: 2rem;
             }
 
@@ -372,6 +452,7 @@ html_content = """
             .about h2,
             .qualifications h2,
             .experience h2,
+            .research h2,
             .contact h2 {
                 font-size: 2rem;
             }
@@ -383,6 +464,10 @@ html_content = """
             .contact-info {
                 grid-template-columns: 1fr;
             }
+
+            .hero-image img {
+                max-width: 280px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -391,7 +476,7 @@ html_content = """
                 font-size: 0.8rem;
             }
 
-            .hero-content h1 {
+            .hero-text-content h1 {
                 font-size: 1.5rem;
             }
 
@@ -402,6 +487,13 @@ html_content = """
             .cta-button {
                 padding: 10px 20px;
                 font-size: 0.95rem;
+                margin-right: 0.5rem;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-image img {
+                max-width: 220px;
             }
         }
 
@@ -427,6 +519,7 @@ html_content = """
                 <li><a href="#about">About</a></li>
                 <li><a href="#qualifications">Qualifications</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -435,10 +528,19 @@ html_content = """
     <!-- Home Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Dr. Abu Bakar Hafeez Bhatti</h1>
-            <p class="subtitle">Consultant Liver Transplant & Hepatobiliary Surgeon</p>
-            <p class="hero-text">Pioneer in Liver Transplant Surgery and Advanced Hepatobiliary Procedures</p>
-            <a href="#contact" class="cta-button">Get in Touch</a>
+            <div class="hero-text-content">
+                <h1>Dr. Abu Bakar Hafeez Bhatti</h1>
+                <p class="subtitle">Consultant Liver Transplant & Hepatobiliary Surgeon</p>
+                <p class="hero-text">Director of Transplant Program at Shifa International Hospital</p>
+                <p class="hero-text">Prolific Researcher with 75+ International Publications</p>
+                <div>
+                    <a href="#research" class="cta-button">View Research</a>
+                    <a href="#contact" class="cta-button">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQG_sY_dFe_eXg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1542276873206?e=2147483647&v=beta&t=abc123" alt="Dr. Abu Bakar Hafeez Bhatti" onerror="this.style.display='none'">
+            </div>
         </div>
     </section>
 
@@ -448,14 +550,15 @@ html_content = """
             <h2>About Dr. Abu Bakar Hafeez Bhatti</h2>
             <div class="about-content">
                 <p>
-                    Dr. Abu Bakar Hafeez Bhatti is a world-renowned liver transplant and hepatobiliary surgeon based in Islamabad, Pakistan. 
-                    With extensive training from international institutions and decades of experience, he is a leading figure in advancing 
-                    liver transplant programs in Pakistan.
+                    Dr. Abu Bakar Hafeez Bhatti is a highly regarded Consultant Liver Transplant and Hepato-Pancreatico-Biliary (HPB) Surgeon 
+                    and the Director of the Transplant Program at Shifa International Hospital in Islamabad, Pakistan. With extensive training 
+                    from international institutions and decades of experience, he is a leading figure in advancing liver transplant programs in Pakistan.
                 </p>
                 <p>
-                    As a Consultant in Liver Transplantation and Hepatobiliary Pancreatic Surgery at Shifa International Hospital, 
-                    Dr. Bhatti has performed numerous successful transplants and complex surgical procedures. He also serves as the 
-                    Program Director for Liver Transplant and HPB Surgery at Shifa International Hospital.
+                    As a prolific researcher with over 75 international publications in hepatobiliary surgery and oncology, Dr. Bhatti is an 
+                    active contributor to the global understanding of liver surgery and transplantation, particularly within the context of South Asia. 
+                    He is dedicated to providing world-class surgical care and advancing the field of hepatobiliary medicine through clinical excellence 
+                    and groundbreaking research.
                 </p>
             </div>
         </div>
@@ -472,29 +575,19 @@ html_content = """
                     <p class="detail">Dow Medical College, Karachi</p>
                 </div>
                 <div class="qual-card">
+                    <h3>Residency</h3>
+                    <p>General Surgery</p>
+                    <p class="detail">Dow University of Health Sciences, Karachi</p>
+                </div>
+                <div class="qual-card">
                     <h3>Postgraduate Qualification</h3>
                     <p>FCPS</p>
                     <p class="detail">Fellow of College of Physicians & Surgeons, Pakistan</p>
                 </div>
                 <div class="qual-card">
                     <h3>International Fellowship</h3>
-                    <p>FRCS</p>
+                    <p>FRCS (Glasgow)</p>
                     <p class="detail">Fellow of the Royal College of Surgeons, Glasgow, UK</p>
-                </div>
-                <div class="qual-card">
-                    <h3>Oncology Fellowship</h3>
-                    <p>Complex Surgical Oncology</p>
-                    <p class="detail">Shaukat Khanum Cancer Hospital</p>
-                </div>
-                <div class="qual-card">
-                    <h3>Advanced Training</h3>
-                    <p>Multi-visceral Abdominal Transplantation</p>
-                    <p class="detail">Georgetown University, Washington, USA</p>
-                </div>
-                <div class="qual-card">
-                    <h3>Specialized Training</h3>
-                    <p>Hepatobiliary Surgery</p>
-                    <p class="detail">Shifa International Hospital, Islamabad</p>
                 </div>
             </div>
         </div>
@@ -507,28 +600,68 @@ html_content = """
             <div class="experience-content">
                 <div class="exp-item">
                     <h3>Current Position</h3>
-                    <p><strong>Consultant in Liver Transplantation & Hepatobiliary Pancreatic Surgery</strong></p>
-                    <p class="detail">Shifa International Hospital, Islamabad</p>
-                </div>
-                <div class="exp-item">
-                    <h3>Leadership Role</h3>
-                    <p><strong>Program Director - Liver Transplant & HPB Surgery</strong></p>
+                    <p><strong>Director of Transplant Program</strong></p>
+                    <p><strong>Consultant Liver Transplantation & Hepatobiliary Pancreatic Surgery</strong></p>
                     <p class="detail">Shifa International Hospital, Islamabad</p>
                 </div>
                 <div class="exp-item">
                     <h3>Areas of Expertise</h3>
                     <ul class="expertise-list">
-                        <li>Liver Transplant Surgery</li>
+                        <li>Liver Transplant Surgery (LDLT & DDLT)</li>
                         <li>Hepato-Pancreato-Biliary Surgery</li>
                         <li>Surgical Oncology</li>
                         <li>Complex Abdominal Surgery</li>
+                        <li>Living Donor Liver Transplantation for HCC</li>
                     </ul>
                 </div>
                 <div class="exp-item">
+                    <h3>Professional Recognition</h3>
+                    <p>Extensive experience in performing complex surgical procedures with excellent patient outcomes</p>
+                    <p class="detail">Dedicated to advancing surgical excellence and patient care in Pakistan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <h2>Research & Publications</h2>
+            <div class="research-content">
+                <div class="research-item">
+                    <h3>Research Overview</h3>
+                    <p>
+                        Dr. Bhatti is a prolific researcher with over 75 international publications in hepatobiliary surgery and oncology. 
+                        His research contributes significantly to the global understanding of liver surgery and transplantation, with a particular 
+                        focus on South Asian populations and their unique clinical challenges.
+                    </p>
+                    <div class="research-highlight">
+                        <strong>Key Research Areas:</strong>
+                        <ul class="expertise-list">
+                            <li>Hepatocellular Carcinoma (HCC) - Efficacy and outcomes of Living Donor Liver Transplantation (LDLT)</li>
+                            <li>Liver Donor Assessment - Long-term medical and quality-of-life outcomes for living liver donors</li>
+                            <li>Oncological Surgery - Breast conservative therapy and early-onset rectal cancer in Pakistani population</li>
+                            <li>Clinical Guidelines - Co-authoring national guidelines for hilar cholangiocarcinoma diagnosis and treatment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="research-item">
                     <h3>Academic Contributions</h3>
-                    <p><strong>More than 75 international publications</strong></p>
-                    <p class="detail">Peer-reviewed journals and medical conferences</p>
-                    <p class="detail">Reviewer for numerous international medical journals</p>
+                    <p><strong>Publication Count: 75+ International Publications</strong></p>
+                    <p>
+                        Dr. Bhatti has published extensively in peer-reviewed journals and presented his research at major international 
+                        medical conferences. He is also an active reviewer for numerous international medical journals.
+                    </p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Access His Publications</h3>
+                    <p>View Dr. Bhatti's complete bibliography and academic contributions across major scientific databases:</p>
+                    <ul class="profile-links">
+                        <li><a href="https://www.researchgate.net/profile/Abu-Bhatti-2" target="_blank">ResearchGate Profile</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed Database</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -544,19 +677,21 @@ html_content = """
                         <h3>Hospital</h3>
                         <p>Shifa International Hospital</p>
                         <p class="detail">H-8/4, Islamabad, Pakistan</p>
+                        <p class="detail"><strong>Phone:</strong> 0313 5550131</p>
                     </div>
                     <div class="contact-item">
                         <h3>Appointment Booking</h3>
                         <p>Contact Shifa International Hospital</p>
                         <p class="detail">Visit: www.shifa.com.pk</p>
+                        <p class="detail">Call: 0313 5550131 for appointments</p>
                     </div>
                     <div class="contact-item">
                         <h3>Professional Profiles</h3>
-                        <p>Find more information on:</p>
+                        <p>Connect & Learn More:</p>
                         <ul class="profile-links">
+                            <li><a href="https://www.linkedin.com/in/abu-bakar-hafeez-bhatti-8b34342b1/" target="_blank">LinkedIn Profile</a></li>
+                            <li><a href="https://www.researchgate.net/profile/Abu-Bhatti-2" target="_blank">ResearchGate Profile</a></li>
                             <li><a href="https://www.shifa.com.pk" target="_blank">Shifa International Hospital</a></li>
-                            <li><a href="https://www.marham.pk" target="_blank">Marham</a></li>
-                            <li><a href="https://www.oladoc.com" target="_blank">Oladoc</a></li>
                         </ul>
                     </div>
                 </div>
@@ -568,7 +703,7 @@ html_content = """
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Dr. Abu Bakar Hafeez Bhatti. All rights reserved.</p>
-            <p class="footer-text">Professional website dedicated to showcasing medical expertise and achievements.</p>
+            <p class="footer-text">Professional website dedicated to showcasing medical expertise and academic achievements.</p>
         </div>
     </footer>
 
@@ -602,7 +737,7 @@ html_content = """
         }, observerOptions);
 
         // Observe all sections and cards
-        document.querySelectorAll('.about, .qualifications, .experience, .contact, .qual-card, .exp-item, .contact-item').forEach(el => {
+        document.querySelectorAll('.about, .qualifications, .experience, .research, .contact, .qual-card, .exp-item, .contact-item, .research-item').forEach(el => {
             observer.observe(el);
         });
 
